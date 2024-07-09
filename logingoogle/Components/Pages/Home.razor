@@ -1,0 +1,33 @@
+﻿@page "/"
+
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+
+<button @onclick="login">
+    google
+</button>
+
+<p>
+    @token
+</p>
+
+@code {
+    private string token;
+    private async void login()
+    {
+        
+        try
+        {
+            GoogleAuthService googleAuthService = new GoogleAuthService();
+            var user = await googleAuthService.AuthenticateAsync();
+            token = user.Id;
+        }
+        catch (Exception ex)
+        {
+            token = ex.Message;
+        }
+    }
+}
