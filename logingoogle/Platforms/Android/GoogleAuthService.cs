@@ -18,7 +18,7 @@ namespace logingoogle
             _activity = Platform.CurrentActivity;
 
             _gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
-                   .RequestIdToken("XXXX")
+                   .RequestIdToken("301265092072-me4vjbna9i3tr8upqrq7tturnbmv82dg.apps.googleusercontent.com") //.RequestIdToken("17:F7:65:BD:40:C0:26:29:F0:F3:72:77:20:EB:DD:AD:D2:11:EE:30")
                    .RequestEmail()
                    .RequestId()
                    .RequestProfile()
@@ -53,9 +53,16 @@ namespace logingoogle
             {
                 throw new Exception("Error");
             }
+
+            return null;
         }
 
-        public partial Task LogoutAsync() => _googleSignInClient.SignOutAsync();
+        public partial Task LogoutAsync()
+        {
+                   return   _googleSignInClient.SignOutAsync();
+
+            return null;
+        }
         private void MainActivity_ResultGoogleAuth(object sender, (bool Success, GoogleSignInAccount Account) e)
         {
             if (e.Success)
